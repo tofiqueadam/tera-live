@@ -57,9 +57,13 @@ export function usualAt(cells, weekday, hour, prior = PRIOR) {
   };
 }
 
-/** 24 hourly queue estimates for one weekday, for the "typical day" strip. */
+/** 24 hourly queue estimates for one weekday, for the "typical day" strip (null = no data that hour). */
 export function dayProfile(cells, weekday) {
   const out = [];
-  for (let h = 0; h < 24; h++) out.push(usualAt(cells, weekday, h)?.queueScore ?? null);
+  for (let h = 0; h < 24; h++) {
+    // Hours nobody has ever reported stay empty rather than showing the prior.
+    const u = usualAt(cells, weekday, h);
+    out.push(u && u.hourReports > 0 ? u.queueScore : null);
+  }
   return out;
 }
