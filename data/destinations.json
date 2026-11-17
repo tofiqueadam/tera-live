@@ -1,0 +1,22 @@
+{
+  "status": "needs-local-review",
+  "note": "Curated fallback list of major minibus destinations in Addis Ababa, used when OpenStreetMap has no route relation for a station. Spellings and coverage need review by local riders and station attendants (weyala). Amharic names need native-speaker review.",
+  "destinations": [
+    { "id": "megenagna", "en": "Megenagna", "am": "መገናኛ" },
+    { "id": "piassa", "en": "Piassa", "am": "ፒያሳ" },
+    { "id": "mexico", "en": "Mexico", "am": "ሜክሲኮ" },
+    { "id": "bole", "en": "Bole", "am": "ቦሌ" },
+    { "id": "ayat", "en": "Ayat", "am": "አያት" },
+    { "id": "cmc", "en": "CMC", "am": "ሲኤምሲ" },
+    { "id": "kality", "en": "Kality", "am": "ቃሊቲ" },
+    { "id": "merkato", "en": "Merkato", "am": "መርካቶ" },
+    { "id": "stadium", "en": "Stadium", "am": "ስታዲየም" },
+    { "id": "4kilo", "en": "4 Kilo", "am": "4 ኪሎ" },
+    { "id": "torhailoch", "en": "Torhailoch", "am": "ጦር ኃይሎች" },
+    { "id": "jemo", "en": "Jemo", "am": "ጀሞ" },
+    { "id": "summit", "en": "Summit", "am": "ሰሚት" },
+    { "id": "saris", "en": "Saris", "am": "ሳሪስ" },
+    { "id": "kazanchis", "en": "Kazanchis", "am": "ካዛንቺስ" },
+    { "id": "gerji", "en": "Gerji", "am": "ገርጂ" }
+  ]
+}
