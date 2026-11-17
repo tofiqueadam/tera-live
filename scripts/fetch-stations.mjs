@@ -15,11 +15,13 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { slug } from '../web/js/core/model.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CACHE = join(ROOT, 'scripts', '.cache', 'overpass-addis.json');
 const OUT = join(ROOT, 'web', 'data', 'stations.geojson');
 const CURATED = join(ROOT, 'data', 'destinations.json');
+const INDEX = join(ROOT, 'worker', 'src', 'generated', 'stations.json');
 
 const ENDPOINTS = [
   'https://overpass-api.de/api/interpreter',
@@ -163,6 +165,24 @@ export function toGeoJSON(raw, curated) {
     features,
   };
 }
+/**
+ * Compact index bundled into the Worker so it can validate station ids and
+ * directions, check physically impossible report sequences and power the
+ * Telegram station search — without any database lookups.
+ */
+export function toWorkerIndex(fc, curated) {
+  const stations = {};
+  for (const f of fc.features) {
+    const p = f.properties;
+    stations[p.id] = [...f.geometry.coordinates, p.name, (p.dirs || []).map(slug), p.name_am || ''];
+  }
+  return {
+    osm_base: fc.metadata.osm_base,
+    destinations: curated.destinations,
+    stations,
+  };
+}
+
 const rank = (k) => ({ terminal: 3, taxi: 2, stop: 1 })[k] || 0;
 
 async function main() {
@@ -183,6 +203,7 @@ async function main() {
   const lines = fc.features.map((f) => JSON.stringify(f));
   const body = `{"type":"FeatureCollection","metadata":${JSON.stringify(fc.metadata)},"features":[\n${lines.join(',\n')}\n]}\n`;
   await writeFile(OUT, body);
+  await writeFile(INDEX, JSON.stringify(toWorkerIndex(fc, curated)) + '\n');
   const kinds = fc.features.reduce((acc, f) => ((acc[f.properties.kind] = (acc[f.properties.kind] || 0) + 1), acc), {});
   const withDirs = fc.features.filter((f) => f.properties.dirs).length;
   console.error(`✓ wrote ${fc.features.length} stations to ${OUT}`);
