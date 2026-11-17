@@ -1,0 +1,26 @@
+{
+  "name": "tera-live-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker + D1 API for Tera Live crowdsourced minibus status",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "db:migrate:local": "wrangler d1 migrations apply tera-live --local",
+    "db:migrate:remote": "wrangler d1 migrations apply tera-live --remote",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "0.15.0",
+    "@cloudflare/workers-types": "^4.20260702.1",
+    "typescript": "~5.9.0",
+    "vitest": "~4.1.0",
+    "wrangler": "4.85.0"
+  },
+  "engines": {
+    "node": ">=20.3"
+  }
+}

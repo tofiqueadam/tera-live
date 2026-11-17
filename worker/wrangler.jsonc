@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tera-live-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-01",
+  "observability": { "enabled": true },
+  // Prune raw reports and rate-limit windows every hour.
+  "triggers": { "crons": ["17 * * * *"] },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tera-live",
+      // Replace with the id printed by `wrangler d1 create tera-live`.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    // Comma-separated list of origins allowed to call the API from a browser.
+    "ALLOWED_ORIGINS": "http://localhost:8080,http://127.0.0.1:8080"
+  }
+  // Secrets (set with `wrangler secret put`, never committed):
+  //   HASH_SALT                 random string used to hash device ids and IPs
+  //   TELEGRAM_BOT_TOKEN        optional, enables Telegram replies
+  //   TELEGRAM_WEBHOOK_SECRET   optional, verifies webhook calls
+}
