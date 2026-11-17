@@ -11,6 +11,7 @@
 //   view=list|map     lang=en|am                theme=light|dark
 //   at=<lon>,<lat>    pretend location (dev/screenshots)
 //   api=<url>         API base override (localhost only)
+//   hour=<0-23>       demo only: simulate a given Addis hour      sw=1  register SW on localhost
 
 import { CONFIG } from '../config.js';
 import { createApiSource } from './data/api.js';
@@ -160,7 +161,16 @@ async function boot() {
   const apiBase = (isLocal && params.get('api')) || CONFIG.apiBase;
 
   state.data = await loadStations();
-  if (demo) state.source = createDemoSource(state.data);
+  if (demo) {
+    // Demo only: ?hour=8 replays the simulation at 08:xx Addis time (e.g. rush hour).
+    const hour = Number(params.get('hour'));
+    let offset = 0;
+    if (params.has('hour') && hour >= 0 && hour < 24) {
+      const addisHour = new Date(Date.now() + 3 * 3_600_000).getUTCHours();
+      offset = (hour - addisHour) * 3_600_000;
+    }
+    state.source = createDemoSource(state.data, () => Date.now() + offset);
+  }
   else if (apiBase) state.source = createApiSource(apiBase);
   else {
     // No backend configured: do NOT fake it. Fall back to an empty live layer
@@ -226,7 +236,7 @@ async function boot() {
   setInterval(() => document.visibilityState === 'visible' && refreshLive(), LIVE_REFRESH_MS);
   document.addEventListener('visibilitychange', () => document.visibilityState === 'visible' && refreshLive());
 
-  if ('serviceWorker' in navigator && !isLocal) navigator.serviceWorker.register('sw.js').catch(() => {});
+  if ('serviceWorker' in navigator && (!isLocal || params.has('sw'))) navigator.serviceWorker.register('sw.js').catch(() => {});
 }
 
 boot().catch((err) => {
