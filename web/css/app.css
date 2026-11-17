@@ -173,13 +173,13 @@ a { color: inherit; }
 }
 
 /* ---------- Main / panes ---------- */
-.main { flex: 1; min-height: 0; position: relative; display: grid; }
+.main { flex: 1; min-height: 0; position: relative; display: grid; grid-template-rows: minmax(0, 1fr); grid-template-columns: minmax(0, 1fr); }
 .pane { min-height: 0; min-width: 0; }
 .main[data-view="list"] .pane-map { display: none; }
 .main[data-view="map"] .pane-list { display: none; }
 .pane-list { overflow-y: auto; overscroll-behavior: contain; padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
 .pane-map { position: relative; }
-.map { position: absolute; inset: 0; background: var(--surface-2); }
+.pane-map > .map { position: absolute; inset: 0; background: var(--surface-2); }
 
 /* ---------- List ---------- */
 .list-tools {
@@ -285,7 +285,7 @@ a { color: inherit; }
   padding: 0 0 calc(16px + env(safe-area-inset-bottom));
   animation: up .22s cubic-bezier(.2, .8, .2, 1);
 }
-@keyframes up { from { transform: translateY(24px); opacity: .4; } }
+@keyframes up { from { transform: translateY(32px); } }
 @media (prefers-reduced-motion: reduce) { .sheet { animation: none; } }
 .grab { display: block; width: 40px; height: 4px; border-radius: 2px; background: var(--faint); margin: 8px auto 0; }
 .sh-head {
@@ -332,7 +332,8 @@ a { color: inherit; }
 .big.q-long { background: var(--q-long); color: var(--q-long-ink); }
 .big.q-very_long { background: var(--q-very_long); color: var(--q-very_long-ink); }
 .big.q-unknown { color: var(--muted); font-size: 18px; padding-left: 0; }
-.big.t-plain { padding-left: 0; font-size: 22px; }
+.big.t-plain { padding-left: 0; font: 800 24px/1 var(--font); letter-spacing: -.01em; text-transform: none; gap: 10px; }
+.big.t-plain::before { width: 14px; height: 14px; }
 .board-foot { grid-column: 1 / -1; background: var(--surface); padding: 9px 12px; display: flex; justify-content: space-between; gap: 8px; font: 500 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 :lang(am) .board-foot { letter-spacing: .02em; font-size: 12px; }
 .conf { display: inline-flex; gap: 6px; align-items: center; color: var(--ink); }
