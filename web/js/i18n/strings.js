@@ -1,0 +1,169 @@
+// Tera Live UI strings — English and Amharic, in one place.
+//
+// STATUS: the Amharic strings NEED NATIVE-SPEAKER REVIEW before launch.
+// Keep them short (they sit inside buttons and chips at 360 px) and use
+// everyday Addis wording over formal register. Placeholders use {name}.
+//
+// Shared with the Worker's Telegram bot, so keep it a dependency-free module.
+
+export const STRINGS = {
+  en: {
+    app_name: 'Tera Live',
+    tagline: 'Live minibus lines, Addis Ababa',
+    tab_map: 'Map',
+    tab_list: 'Nearby',
+    search_placeholder: 'Search stations',
+    locate: 'Use my location',
+    locating: 'Finding you…',
+    located: 'Sorted by distance',
+    locate_denied: 'Location off — sorted by activity',
+    sorted_activity: 'Sorted by live activity',
+
+    queue: 'Line',
+    taxis: 'Taxis',
+    q_none: 'No line',
+    q_short: 'Short',
+    q_long: 'Long',
+    q_very_long: 'Very long',
+    t_waiting: 'Waiting',
+    t_arriving: 'Arriving',
+    t_none: 'None',
+    no_data: 'No reports',
+
+    live_now: 'Live now',
+    usual_now: 'Usually at this hour',
+    usual_none: 'Not enough history yet',
+    usual_based: 'from {n} reports',
+    typical_day: 'Typical {day}',
+    reports_n: '{n} reports',
+    conf_high: 'Confirmed',
+    conf_medium: '1 rider',
+    conf_low: 'Fading',
+    just_now: 'just now',
+    min_ago: '{n} min ago',
+    away_m: '{n} m',
+    away_km: '{n} km',
+    directions: 'Destinations',
+    dir_review: 'Destination list needs local review',
+    more_destinations: 'More destinations',
+
+    report_cta: 'Report this tera',
+    report_where: 'Going to?',
+    report_queue: 'How long is the line?',
+    report_taxis: 'Any taxis?',
+    report_send: 'Send',
+    report_sending: 'Sending…',
+    report_thanks: 'Thanks — your report is live',
+    report_offline: 'Saved — will send when online',
+    report_error: 'Could not send. Try again.',
+    report_rate: 'Easy — try again in a few minutes',
+    report_duplicate: 'You already reported this',
+    report_too_far: 'Report from the station you are at',
+    back: 'Back',
+    close: 'Close',
+
+    simulated: 'SIMULATED DATA',
+    simulated_note: 'Demo mode: these reports are generated, not real.',
+    offline: 'Offline — showing last data',
+    legend: 'Legend',
+    lang_switch: 'አማርኛ',
+    theme: 'Theme',
+    about: 'About',
+    attribution: 'Stations © OpenStreetMap contributors (ODbL)',
+
+    day_0: 'Sunday', day_1: 'Monday', day_2: 'Tuesday', day_3: 'Wednesday',
+    day_4: 'Thursday', day_5: 'Friday', day_6: 'Saturday',
+
+    kind_terminal: 'Terminal',
+    kind_taxi: 'Taxi stop',
+    kind_stop: 'Stop',
+
+    tg_help: 'Tera Live — live minibus lines in Addis.\nSend a station name to report, or share your location to see the nearest teras.\n/status <station> — live status',
+    tg_pick_station: 'Which station?',
+    tg_no_match: 'No station found. Try another spelling.',
+    tg_live_none: 'No live reports in the last 90 minutes.',
+  },
+
+  am: {
+    app_name: 'ተራ ላይቭ',
+    tagline: 'የአዲስ አበባ ታክሲ ተራ በቀጥታ',
+    tab_map: 'ካርታ',
+    tab_list: 'አቅራቢያ',
+    search_placeholder: 'ጣቢያ ፈልግ',
+    locate: 'አካባቢዬን ተጠቀም',
+    locating: 'በመፈለግ ላይ…',
+    located: 'በርቀት ተደርድሯል',
+    locate_denied: 'አካባቢ ጠፍቷል — በእንቅስቃሴ ተደርድሯል',
+    sorted_activity: 'በቀጥታ እንቅስቃሴ ተደርድሯል',
+
+    queue: 'ተራ',
+    taxis: 'ታክሲ',
+    q_none: 'ተራ የለም',
+    q_short: 'አጭር',
+    q_long: 'ረጅም',
+    q_very_long: 'በጣም ረጅም',
+    t_waiting: 'ቆመዋል',
+    t_arriving: 'እየመጡ ነው',
+    t_none: 'የሉም',
+    no_data: 'ሪፖርት የለም',
+
+    live_now: 'አሁን',
+    usual_now: 'በዚህ ሰዓት በአብዛኛው',
+    usual_none: 'በቂ መረጃ ገና የለም',
+    usual_based: 'ከ{n} ሪፖርቶች',
+    typical_day: 'የተለመደ {day}',
+    reports_n: '{n} ሪፖርቶች',
+    conf_high: 'የተረጋገጠ',
+    conf_medium: '1 ተጓዥ',
+    conf_low: 'የቆየ',
+    just_now: 'አሁን',
+    min_ago: 'ከ{n} ደቂቃ በፊት',
+    away_m: '{n} ሜ',
+    away_km: '{n} ኪሜ',
+    directions: 'መዳረሻዎች',
+    dir_review: 'የመዳረሻ ዝርዝሩ መረጋገጥ አለበት',
+    more_destinations: 'ሌሎች መዳረሻዎች',
+
+    report_cta: 'ይህን ተራ ሪፖርት አድርግ',
+    report_where: 'ወዴት?',
+    report_queue: 'ተራው ምን ያህል ነው?',
+    report_taxis: 'ታክሲ አለ?',
+    report_send: 'ላክ',
+    report_sending: 'በመላክ ላይ…',
+    report_thanks: 'እናመሰግናለን — ሪፖርትዎ ተለጥፏል',
+    report_offline: 'ተቀምጧል — ኢንተርኔት ሲመጣ ይላካል',
+    report_error: 'መላክ አልተቻለም። እንደገና ይሞክሩ።',
+    report_rate: 'ጥቂት ደቂቃ ቆይተው ይሞክሩ',
+    report_duplicate: 'ይህን አስቀድመው ሪፖርት አድርገዋል',
+    report_too_far: 'ካሉበት ጣቢያ ብቻ ሪፖርት ያድርጉ',
+    back: 'ተመለስ',
+    close: 'ዝጋ',
+
+    simulated: 'SIMULATED DATA',
+    simulated_note: 'የሙከራ ማሳያ፦ እነዚህ ሪፖርቶች እውነተኛ አይደሉም።',
+    offline: 'ከመስመር ውጭ — የመጨረሻው መረጃ',
+    legend: 'መፍቻ',
+    lang_switch: 'English',
+    theme: 'ገጽታ',
+    about: 'ስለ',
+    attribution: 'ጣቢያዎች © OpenStreetMap contributors (ODbL)',
+
+    day_0: 'እሑድ', day_1: 'ሰኞ', day_2: 'ማክሰኞ', day_3: 'ረቡዕ',
+    day_4: 'ሐሙስ', day_5: 'ዓርብ', day_6: 'ቅዳሜ',
+
+    kind_terminal: 'መናኸሪያ',
+    kind_taxi: 'የታክሲ ተራ',
+    kind_stop: 'ፌርማታ',
+
+    tg_help: 'ተራ ላይቭ — የአዲስ አበባ ታክሲ ተራ በቀጥታ።\nሪፖርት ለማድረግ የጣቢያ ስም ይላኩ፣ ወይም አቅራቢያ ያሉ ተራዎችን ለማየት አካባቢዎን ያጋሩ።\n/status <ጣቢያ> — የአሁኑ ሁኔታ',
+    tg_pick_station: 'የትኛው ጣቢያ?',
+    tg_no_match: 'ጣቢያ አልተገኘም። በሌላ አጻጻፍ ይሞክሩ።',
+    tg_live_none: 'ባለፉት 90 ደቂቃዎች ሪፖርት የለም።',
+  },
+};
+
+/** Interpolate {placeholders}. Falls back to English, then to the key. */
+export function translate(lang, key, vars = {}) {
+  const s = STRINGS[lang]?.[key] ?? STRINGS.en[key] ?? key;
+  return s.replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? `{${k}}`));
+}
