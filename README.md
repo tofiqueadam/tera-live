@@ -5,6 +5,8 @@
 [![CI](https://github.com/tofiqueadam/tera-live/actions/workflows/ci.yml/badge.svg)](https://github.com/tofiqueadam/tera-live/actions/workflows/ci.yml)
 ![License: MIT](https://img.shields.io/badge/license-MIT-black)
 
+**▶ [Try the live demo](https://tofiqueadam.github.io/tera-live/?demo=1)** (simulated data, clearly badged) · [Replay the 8 a.m. rush](https://tofiqueadam.github.io/tera-live/?demo=1&hour=8)
+
 Every morning, thousands of people in Addis walk to a *tera* (minibus station) without knowing whether the line is five people or two hundred. Tera Live answers that question. People at the station report what they see in two taps, from the web app or a Telegram bot. Everyone nearby then gets a live board. The board also shows what the queue is *usually* like at that hour.
 
 ![Tera Live on desktop: station list beside a map of Addis coloured by queue length](docs/screenshot-desktop.png)
