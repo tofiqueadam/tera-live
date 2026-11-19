@@ -39,8 +39,10 @@ describe('usualAt (hierarchical Bayesian average)', () => {
   });
 
   it('builds a 24-hour profile', () => {
-    const p = dayProfile([cell(1, 8, 40, 3)], 1);
+    const p = dayProfile([cell(1, 8, 40, 3), cell(1, 12, 40, 0)], 1);
     expect(p).toHaveLength(24);
     expect(p[8]!).toBeGreaterThan(p[12]!);
+    // Hours nobody has reported stay empty instead of echoing the prior.
+    expect(p[3]).toBeNull();
   });
 });
